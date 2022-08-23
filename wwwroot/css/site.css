@@ -1,0 +1,33 @@
+nav.navBar {
+    margin: auto;
+    width: 30%;
+    padding: 10px;
+}
+
+h3.titleBar {
+    text-align: center;
+    color: floralwhite;
+}
+
+body {
+    background-color: #3A3333;
+}
+
+ul.navBarList li {
+    display: inline-block;
+    padding: 0px 19px;
+    color: floralwhite;
+    align-content: center;
+}
+
+.gameBoard {
+    margin: auto;
+    width: 21%;
+    padding: 10px;
+
+}
+
+.gameMessage {
+    text-align: center;
+    color: floralwhite;
+}

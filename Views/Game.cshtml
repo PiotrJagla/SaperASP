@@ -1,0 +1,134 @@
+﻿@using saper.Game
+@using saper.DataStructures
+
+@model GameBoard
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script class="RightMouseClickEvent">
+
+
+    $(document).ready(function() {
+        
+        $(document).contextmenu(function() {
+            return false;
+        
+        $('.gameBoard-button').mousedown(function(event) {
+            if (event.which == 3) 
+                //Sending this information to controller
+                $.post("@Url.Action("gameBoardRightMouseClickEvent", "Saper")", {buttonPosition: this.getAttribute("value")}, function(data) 
+                    //refresh the entire page
+                    $("body").html(data);
+                })
+            }
+        });
+    });
+    
+</script>
+
+<script class="LeftMouseClickEvent">
+
+
+    $(document).ready(function() {
+        
+        $(document).contextmenu(function() {
+            return false;
+        })
+
+        $('.gameBoard-button').mousedown(function(event) {
+            if (event.which == 1) {
+
+                //Sending this information to controller
+                $.post("@Url.Action("gameBoardLeftMouseClickEvent", "Saper")", {buttonPosition: this.getAttribute("value")}, function(data) {
+
+                    //refresh the entire page
+                    $("body").html(data);
+                })
+            }
+        });
+    });
+    
+</script>
+
+<div class="gameBoard">
+
+    <style class="buttonsSize">
+        img{
+            width: 15px;
+        }
+    </style>
+
+
+@for(int iii=0 ; iii < Model.getYsize() ; ++iii)
+{
+    
+    for(int kkk = 0 ; kkk < Model.getXsize() ; ++kkk)
+    {
+        <button class="gameBoard-button" type="submit" name="buttonPosition" value=@(kkk+":"+iii)>
+
+        @{Cell.Type buttonState = Model.getButtonState(new Vector2D(kkk, iii));}
+
+        @if(buttonState == Cell.Type.one)
+        {
+            <img src="~/textures/oneImage.png"/>
+        }
+        else if(buttonState == Cell.Type.two)
+        {
+            <img src="~/textures/twoImage.png"/>
+        }
+        else if(buttonState == Cell.Type.three)
+        {
+            <img src="~/textures/threeImage.png"/>
+        }
+        else if(buttonState == Cell.Type.notOpened)
+        {
+            <img src="~/textures/notOpenedImage.png"/>
+        }
+        else if(buttonState == Cell.Type.bomb)
+        {
+            <img src="~/textures/bombImage.png"/>
+        }
+        else if(buttonState == Cell.Type.flagged)
+        {
+            <img src="~/textures/flagImage.png"/>
+        }
+        else if(buttonState == Cell.Type.empty)
+        {
+            <img src="~/textures/emptyImage.png"/>
+        }
+        else if(buttonState == Cell.Type.detonatedBomb)
+        {
+            <img src="~/textures/detonatedBombImage.png"/>
+        }
+
+        </button>
+    }
+    <br />
+}
+
+
+</div>
+
+<script>
+    setTimeout("location.reload(true);", timeout);
+</script>
+
+
+<div class="gameMessage">
+    @if(Model.isBombClicked() == true)
+    {
+        <p>You Lost!</p>
+    }
+    else
+    {
+        
+    }
+</div>
+
+
+
+
+
+
