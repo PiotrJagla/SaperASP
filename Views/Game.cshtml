@@ -14,11 +14,12 @@
         
         $(document).contextmenu(function() {
             return false;
+        })
         
         $('.gameBoard-button').mousedown(function(event) {
-            if (event.which == 3) 
+            if (event.which == 3) {
                 //Sending this information to controller
-                $.post("@Url.Action("gameBoardRightMouseClickEvent", "Saper")", {buttonPosition: this.getAttribute("value")}, function(data) 
+                $.post("@Url.Action("gameBoardRightMouseClickEvent", "Saper")", { buttonPosition: this.getAttribute("value") }, function(data) {
                     //refresh the entire page
                     $("body").html(data);
                 })
@@ -41,7 +42,7 @@
             if (event.which == 1) {
 
                 //Sending this information to controller
-                $.post("@Url.Action("gameBoardLeftMouseClickEvent", "Saper")", {buttonPosition: this.getAttribute("value")}, function(data) {
+                $.post("@Url.Action("gameBoardLeftMouseClickEvent", "Saper")", { buttonPosition: this.getAttribute("value") }, function(data) {
 
                     //refresh the entire page
                     $("body").html(data);
@@ -111,21 +112,14 @@
 
 </div>
 
-<script>
-    setTimeout("location.reload(true);", timeout);
-</script>
-
-
 <div class="gameMessage">
-    @if(Model.isBombClicked() == true)
+    @if(Model.didLost() == true)
     {
         <p>You Lost!</p>
     }
-    else
-    {
-        
-    }
 </div>
+
+
 
 
 

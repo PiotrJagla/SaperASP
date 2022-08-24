@@ -16,7 +16,6 @@ namespace saper.Controllers
 
         public IActionResult Index()
         {
-            
             return View("~/Views/Game.cshtml", saperBoard);
         }
 
@@ -24,7 +23,6 @@ namespace saper.Controllers
         {
             Vector2D buttonCoordinates = new Vector2D(StringManipulation.getButtonCoordsFromString(buttonPosition));
             saperBoard.openButton(buttonCoordinates);
-            saperBoard.isBombClicked();
             return View("~/Views/Game.cshtml", saperBoard);
         }
 
