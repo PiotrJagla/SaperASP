@@ -53,6 +53,25 @@
     
 </script>
 
+<div class="gameBoardNavbar">
+        <ul class="gameInformations">
+            <li>
+                @using(Html.BeginForm("resetButtonClick","Saper"))
+                {
+                    <button class="resetButton" type="submit">
+                        Reset
+                    </button>
+                }
+            </li>
+            <li>
+                Bombs number: @Model.bombsLeft()
+            </li>
+            <li>
+                <timer
+            </li>
+        </ul>
+</div>
+
 <div class="gameBoard">
 
     <style class="buttonsSize">
@@ -103,6 +122,10 @@
         {
             <img src="~/textures/detonatedBombImage.png"/>
         }
+        else if(buttonState == Cell.Type.missedBomb)
+        {
+            <img src="~/textures/missedBombImage.png"/>
+        }
 
         </button>
     }
@@ -116,6 +139,10 @@
     @if(Model.didLost() == true)
     {
         <p>You Lost!</p>
+    }
+    else if(Model.didWon() == true)
+    {
+        <p>You Won!</p>
     }
 </div>
 

@@ -8,14 +8,9 @@ namespace saper.Controllers
     {
         private static GameBoard saperBoard = new GameBoard();
 
-        public SaperController()
-        {
-
-        }
-
-
         public IActionResult Index()
         {
+            
             return View("~/Views/Game.cshtml", saperBoard);
         }
 
@@ -30,6 +25,12 @@ namespace saper.Controllers
         {
             Vector2D buttonCoordinates = new Vector2D(StringManipulation.getButtonCoordsFromString(buttonPosition));
             saperBoard.flagButton(buttonCoordinates);
+            return View("~/Views/Game.cshtml", saperBoard);
+        }
+
+        public IActionResult resetButtonClick()
+        { 
+            saperBoard.resetGameBoard();
             return View("~/Views/Game.cshtml", saperBoard);
         }
     }

@@ -4,6 +4,7 @@ namespace saper.Game
 {
     public class GameBoard
     {
+        
         private List<List<Cell>> gameBoard;
         private int bombsNumber;
         private Vector2D gameBoardSize;
@@ -48,6 +49,26 @@ namespace saper.Game
             }
         }
 
+        public void resetGameBoard()
+        {
+            this.setDefaultCellsParameters();
+            this.initGameBoard();
+        }
+
+        private void setDefaultCellsParameters()
+        {
+            for (int iii = 0; iii < gameBoardSize.x; ++iii)
+            {
+                for (int kkk = 0; kkk < gameBoardSize.y; ++kkk)
+                {
+                    gameBoard[iii][kkk].IsOpened = false;
+                    gameBoard[iii][kkk].IsFlagged = false;
+                    gameBoard[iii][kkk].cellType = Cell.Type.empty;
+
+                }
+            }
+        }
+
         private void initGameBoard()
         {
             this.distributeGameBoardBombs();
@@ -88,7 +109,7 @@ namespace saper.Game
         public void openButton(Vector2D buttonCoordinates)
         {
             if (gameBoard[buttonCoordinates.x][buttonCoordinates.y].IsFlagged == false &&
-                this.didLost() == false)
+                this.isGameBlocked() == false)
             {
                 if (this.isItFirstRound() == true && this.isThereABomb(buttonCoordinates) == true)
                     this.changeBombPosition(buttonCoordinates);
@@ -142,7 +163,7 @@ namespace saper.Game
         public void flagButton(Vector2D buttonCoordinates)
         {
             if (gameBoard[buttonCoordinates.x][buttonCoordinates.y].IsOpened == false &&
-                this.didLost() == false)
+                this.isGameBlocked() == false)
             {
                 gameBoard[buttonCoordinates.x][buttonCoordinates.y].IsFlagged = 
                     !gameBoard[buttonCoordinates.x][buttonCoordinates.y].IsFlagged;
@@ -178,11 +199,15 @@ namespace saper.Game
             {
                 for (int kkk = 0; kkk < gameBoardSize.y; ++kkk)
                 {
-                    if (isThereABomb(new Vector2D(iii, kkk)) == true)
+                    if (gameBoard[iii][kkk].IsFlagged == true &&
+                         this.isThereABomb(new Vector2D(iii, kkk)) == false)
                     {
-                        gameBoard[iii][kkk].IsOpened = true;
+                        gameBoard[iii][kkk].cellType = Cell.Type.missedBomb;
                         gameBoard[iii][kkk].IsFlagged = false;
+                        gameBoard[iii][kkk].IsOpened = true;
                     }
+                    else if(isThereABomb(new Vector2D(iii, kkk)) == true)
+                        gameBoard[iii][kkk].IsOpened = true;
                 }
             }
         }
@@ -209,19 +234,17 @@ namespace saper.Game
 
         public Cell.Type getButtonState(Vector2D cellPos)
         {
-            Cell.Type cellType = gameBoard[cellPos.x][cellPos.y].cellType;
-
-            if (gameBoard[cellPos.x][cellPos.y].IsOpened == false)
-            {
-                cellType = Cell.Type.notOpened;
-            }
-
             if (gameBoard[cellPos.x][cellPos.y].IsFlagged == true)
-            {
-                cellType = Cell.Type.flagged;
-            }
+                return Cell.Type.flagged;
+            else if (gameBoard[cellPos.x][cellPos.y].IsOpened == false)
+                return Cell.Type.notOpened;
+            else
+                return gameBoard[cellPos.x][cellPos.y].cellType;
+        }
 
-            return cellType;
+        private bool isGameBlocked()
+        {
+            return this.didLost() == true || this.didLost() == true;
         }
 
         public bool didLost()
@@ -239,6 +262,39 @@ namespace saper.Game
             return false;
         }
 
+        public bool didWon()
+        {
+            for (int iii = 0; iii < gameBoardSize.x; ++iii)
+            {
+                for (int kkk = 0; kkk < gameBoardSize.y; ++kkk)
+                {
+                    if (gameBoard[iii][kkk].cellType == Cell.Type.bomb &&
+                        gameBoard[iii][kkk].IsFlagged == false)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
 
+        public int bombsLeft()
+        {
+            return this.bombsNumber - this.getFlaggedButtonsNumber();
+        }
+
+        private int getFlaggedButtonsNumber()
+        {
+            int flagButtons = 0;
+            for (int iii = 0; iii < gameBoardSize.x; ++iii)
+            {
+                for (int kkk = 0; kkk < gameBoardSize.y; ++kkk)
+                {
+                    if (gameBoard[iii][kkk].IsFlagged == true)
+                        ++flagButtons;
+                }
+            }
+            return flagButtons;
+        }
     }
 }

@@ -13,7 +13,8 @@
             bomb,
             flagged, 
             notOpened,
-            detonatedBomb
+            detonatedBomb,
+            missedBomb
         }
         public Type cellType { get; set; }
         public bool IsOpened { get; set; }

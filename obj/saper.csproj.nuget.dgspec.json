@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VisualStudioProjects\\C#\\ASP.NET core\\saper\\saper.csproj": {}
+    "D:\\Program Files (x86)\\GitHub\\SaperASP\\saper.csproj": {}
   },
   "projects": {
-    "D:\\VisualStudioProjects\\C#\\ASP.NET core\\saper\\saper.csproj": {
+    "D:\\Program Files (x86)\\GitHub\\SaperASP\\saper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VisualStudioProjects\\C#\\ASP.NET core\\saper\\saper.csproj",
+        "projectUniqueName": "D:\\Program Files (x86)\\GitHub\\SaperASP\\saper.csproj",
         "projectName": "saper",
-        "projectPath": "D:\\VisualStudioProjects\\C#\\ASP.NET core\\saper\\saper.csproj",
+        "projectPath": "D:\\Program Files (x86)\\GitHub\\SaperASP\\saper.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "D:\\VisualStudioProjects\\C#\\ASP.NET core\\saper\\obj\\",
+        "outputPath": "D:\\Program Files (x86)\\GitHub\\SaperASP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\piotr\\AppData\\Roaming\\NuGet\\NuGet.Config",
