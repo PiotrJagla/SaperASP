@@ -1,7 +1,9 @@
 nav.navBar {
     margin: auto;
-    width: 30%;
+    width: 50%;
     padding: 10px;
+    height: 150px;
+
 }
 
 h3.titleBar {
@@ -18,6 +20,8 @@ ul.navBarList li {
     padding: 0px 19px;
     color: floralwhite;
     align-content: center;
+    position: relative
+    
 }
 
 ul.gameInformations li {
@@ -44,4 +48,14 @@ ul.gameInformations {
 .gameMessage {
     text-align: center;
     color: floralwhite;
+}
+
+ul.difficultyLevels {
+    display: none;
+    position:absolute;
+}
+
+
+li.difficultyLevelsHover:hover ul {
+    display: block;
 }

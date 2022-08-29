@@ -17,8 +17,37 @@
     </div>
     <nav class="navBar">
         <ul class="navBarList">
-            <li>Opcje</li>
-            <li>Poziom trudności</li>
+            <li>
+                Opcje
+            </li>
+            <li class="difficultyLevelsHover">
+                Poziom trudności
+                <ul class="difficultyLevels">
+                    @using(Html.BeginForm("changeDifficultyLevel", "Saper"))
+                    {
+                        <li>
+                            <button class="resetButton" type="submit" name="difficultyLevel" value="easy">
+                                Easy
+                            </button>
+                        </li>
+                        <li>
+                            <button class="resetButton" type="submit" name="difficultyLevel" value="medium">
+                                Medium
+                            </button>
+                        </li>
+                        <li>
+                            <button class="resetButton" type="submit" name="difficultyLevel" value="hard">
+                                Hard
+                            </button>
+                        </li>
+                        <li>
+                            <button class="resetButton" type="submit" name="difficultyLevel" value="custom">
+                                Custom
+                            </button>
+                        </li>
+                    }
+                </ul>
+            </li>
         </ul>
     </nav>
     <div>

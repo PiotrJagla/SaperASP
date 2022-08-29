@@ -10,7 +10,6 @@ namespace saper.Controllers
 
         public IActionResult Index()
         {
-            
             return View("~/Views/Game.cshtml", saperBoard);
         }
 
@@ -31,6 +30,12 @@ namespace saper.Controllers
         public IActionResult resetButtonClick()
         { 
             saperBoard.resetGameBoard();
+            return View("~/Views/Game.cshtml", saperBoard);
+        }
+
+        public IActionResult changeDifficultyLevel(string difficultyLevel)
+        {
+            saperBoard.changeDifficultyLevel(difficultyLevel);
             return View("~/Views/Game.cshtml", saperBoard);
         }
     }
