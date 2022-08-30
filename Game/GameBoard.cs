@@ -305,6 +305,7 @@ namespace saper.Game
                 this.gameBoardSize.x = 25;
                 this.gameBoardSize.y = 25;
             }
+            this.allocateGameBoardMemory();
             this.resetGameBoard();
         }
     }

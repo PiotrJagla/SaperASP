@@ -2,7 +2,7 @@ nav.navBar {
     margin: auto;
     width: 50%;
     padding: 10px;
-    height: 150px;
+    height: 74px;
 
 }
 
@@ -40,9 +40,8 @@ ul.gameInformations {
 
 .gameBoard {
     margin: auto;
-    width: 21%;
+    width: 90%;
     padding: 10px;
-
 }
 
 .gameMessage {
@@ -58,4 +57,21 @@ ul.difficultyLevels {
 
 li.difficultyLevelsHover:hover ul {
     display: block;
+}
+
+button.gameBoard-button{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+
+    height: 16px;
+    width: 20px;
+
+}
+
+img {
+    width: 15px;
+    height: 15px;
 }
