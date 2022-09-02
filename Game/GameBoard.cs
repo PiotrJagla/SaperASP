@@ -129,6 +129,7 @@ namespace saper.Game
                     this.changeBombPosition(buttonCoordinates);
                 
                 gameBoard[buttonCoordinates.x][buttonCoordinates.y].IsOpened = true;
+                this.isEmptyCellClicked(buttonCoordinates);
             }
             this.isBombClicked(buttonCoordinates);
         }
@@ -204,6 +205,84 @@ namespace saper.Game
                 return true;
             }
             return false;
+        }
+
+        private void isEmptyCellClicked(Vector2D cellCoordinates)
+        {
+            if (gameBoard[cellCoordinates.x][cellCoordinates.y].cellType == Cell.Type.empty)
+                this.revealAdjancedEmptyCells(cellCoordinates);
+        }
+
+        private void revealAdjancedEmptyCells(Vector2D cellCoordinates)
+        {
+            List<Vector2D> adjancedEmptyCellsCoords = this.getAdjancedEmptyCellsCoords(cellCoordinates);
+
+            while(adjancedEmptyCellsCoords.Count != 0)
+            {
+                for(int iii = 0; iii < adjancedEmptyCellsCoords.Count; ++iii)
+                {
+                    gameBoard[adjancedEmptyCellsCoords[iii].x][adjancedEmptyCellsCoords[iii].y].IsOpened = true;
+                }
+                List<Vector2D> temp = adjancedEmptyCellsCoords.ToList<Vector2D>();
+                adjancedEmptyCellsCoords.Clear();
+                for(int iii = 0; iii < temp.Count; ++iii)
+                {
+                    adjancedEmptyCellsCoords.AddRange(this.getAdjancedEmptyCellsCoords(temp[iii]));
+                }
+            }
+        }
+
+        private List<Vector2D> getAdjancedEmptyCellsCoords(Vector2D cellCoordinates)
+        {
+            List<Vector2D> adjancedEmptyCellsCoords = new List<Vector2D>();
+
+            Vector2D left = new Vector2D(cellCoordinates.x, cellCoordinates.y - 1);
+            Vector2D right = new Vector2D(cellCoordinates.x, cellCoordinates.y + 1);
+            Vector2D up = new Vector2D(cellCoordinates.x - 1, cellCoordinates.y);
+            Vector2D down = new Vector2D(cellCoordinates.x + 1, cellCoordinates.y);
+
+            if (Validation.isOutsize2DArray(left, gameBoardSize) == false && 
+                this.isThereANumber(left) == true)
+                gameBoard[left.x][left.y].IsOpened = true;
+
+            if (Validation.isOutsize2DArray(right, gameBoardSize) == false && 
+                this.isThereANumber(right) == true)
+                gameBoard[right.x][right.y].IsOpened = true;
+
+            if (Validation.isOutsize2DArray(up, gameBoardSize) == false && 
+                this.isThereANumber(up) == true)
+                gameBoard[up.x][up.y].IsOpened = true;
+
+            if (Validation.isOutsize2DArray(down, gameBoardSize) == false && 
+                this.isThereANumber(down) == true)
+                gameBoard[down.x][down.y].IsOpened = true;
+
+            
+            if (Validation.isOutsize2DArray(left, gameBoardSize) == false && 
+                gameBoard[left.x][left.y].IsOpened == false)
+                adjancedEmptyCellsCoords.Add(left);
+
+            if (Validation.isOutsize2DArray(right, gameBoardSize) == false && 
+                gameBoard[right.x][right.y].IsOpened == false)
+                adjancedEmptyCellsCoords.Add(right);
+
+            if (Validation.isOutsize2DArray(up, gameBoardSize) == false && 
+                gameBoard[up.x][up.y].IsOpened == false)
+                adjancedEmptyCellsCoords.Add(up);
+
+            if (Validation.isOutsize2DArray(down, gameBoardSize) == false && 
+                gameBoard[down.x][down.y].IsOpened == false)
+                adjancedEmptyCellsCoords.Add(down);
+
+            return adjancedEmptyCellsCoords;
+        }
+
+        private bool isThereANumber(Vector2D cellCoordinates)
+        {
+            return gameBoard[cellCoordinates.x][cellCoordinates.y].cellType == Cell.Type.one ||
+                   gameBoard[cellCoordinates.x][cellCoordinates.y].cellType == Cell.Type.two ||
+                   gameBoard[cellCoordinates.x][cellCoordinates.y].cellType == Cell.Type.three ||
+                   gameBoard[cellCoordinates.x][cellCoordinates.y].cellType == Cell.Type.four;
         }
 
         private void revealAllBombs()

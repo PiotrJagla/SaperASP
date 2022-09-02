@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0P/Hoc9SMvAW9mfOPhAPyRoEyaqGH/c2ciSHaKYVgoU=",
+  "Hash": "J43/qwbzqhV2PpQgkcOSdBnVFXCIMRfbQmryX7jkGDk=",
   "Source": "saper",
   "BasePath": "_content/saper",
   "Mode": "Default",
@@ -1088,6 +1088,23 @@
       "OriginalItemSpec": "wwwroot\\textures\\emptyImage.png"
     },
     {
+      "Identity": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\textures\\fiveImage.png",
+      "SourceId": "saper",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\",
+      "BasePath": "_content/saper",
+      "RelativePath": "textures/fiveImage.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\textures\\fiveImage.png"
+    },
+    {
       "Identity": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\textures\\flagImage.png",
       "SourceId": "saper",
       "SourceType": "Discovered",
@@ -1103,6 +1120,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\textures\\flagImage.png"
+    },
+    {
+      "Identity": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\textures\\fourImage.png",
+      "SourceId": "saper",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\",
+      "BasePath": "_content/saper",
+      "RelativePath": "textures/fourImage.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\textures\\fourImage.png"
     },
     {
       "Identity": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\textures\\missedBombImage.png",
@@ -1154,23 +1188,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\textures\\oneImage.png"
-    },
-    {
-      "Identity": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\textures\\saperTextures.png",
-      "SourceId": "saper",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\",
-      "BasePath": "_content/saper",
-      "RelativePath": "textures/saperTextures.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\textures\\saperTextures.png"
     },
     {
       "Identity": "D:\\Program Files (x86)\\GitHub\\SaperASP\\wwwroot\\textures\\threeImage.png",

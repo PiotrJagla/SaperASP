@@ -9,6 +9,7 @@
         {
             this.x = x;
             this.y = y;
+        
         }
 
         public Vector2D(Vector2D vector2D)

@@ -41,7 +41,7 @@ ul.gameInformations {
 .gameBoard {
     margin: auto;
     width: 90%;
-    padding: 10px;
+    font-size: 0;
 }
 
 .gameMessage {
@@ -59,19 +59,17 @@ li.difficultyLevelsHover:hover ul {
     display: block;
 }
 
-button.gameBoard-button{
+button.gameBoard-button {
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;
     cursor: pointer;
     overflow: hidden;
-
-    height: 16px;
-    width: 20px;
-
+    height: 22px;
+    width: 27px;
 }
 
 img {
-    width: 15px;
-    height: 15px;
+    width: 22px;
+    height: 22px;
 }
