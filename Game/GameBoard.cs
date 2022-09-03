@@ -15,6 +15,22 @@ namespace saper.Game
             this.initVariables();
             this.allocateGameBoardMemory();
             this.initGameBoard();
+            this.writeInConsoleBombsCoordinates();
+        }
+
+        private void writeInConsoleBombsCoordinates()
+        {
+            //TEST FUNCTION
+            for (int iii = 0; iii < gameBoardSize.x; ++iii)
+            {
+                for (int kkk = 0; kkk < gameBoardSize.y; ++kkk)
+                {
+                    if (this.isThereABomb(new Vector2D(iii,kkk)) == true)
+                    {
+                        Console.WriteLine("X: " + iii + " Y: " + kkk);
+                    }
+                }
+            }
         }
 
         private void initVariables()
@@ -22,6 +38,7 @@ namespace saper.Game
             bombsNumber = 10;
             gameBoardSize = new Vector2D(9, 9);
         }
+
 
         private void allocateGameBoardMemory()
         {
@@ -125,13 +142,37 @@ namespace saper.Game
             if (gameBoard[buttonCoordinates.x][buttonCoordinates.y].IsFlagged == false &&
                 this.isGameBlocked() == false)
             {
-                if (this.isItFirstRound() == true && this.isThereABomb(buttonCoordinates) == true)
-                    this.changeBombPosition(buttonCoordinates);
-                
                 gameBoard[buttonCoordinates.x][buttonCoordinates.y].IsOpened = true;
-                this.isEmptyCellClicked(buttonCoordinates);
+                this.specjalOpenedButtonCases(buttonCoordinates);
             }
+        }
+
+        private void specjalOpenedButtonCases(Vector2D buttonCoordinates)
+        {
+            if (this.isItFirstRound() == true && this.isThereABomb(buttonCoordinates) == true)
+                this.changeBombPosition(buttonCoordinates);
+
+            this.isEmptyCellClicked(buttonCoordinates);
             this.isBombClicked(buttonCoordinates);
+        }
+
+        private bool isItFirstRound()
+        {
+            return this.openedCellsNumber() == 1;
+        }
+
+        private int openedCellsNumber()
+        {
+            int openedCells = 0;
+            for (int iii = 0; iii < gameBoardSize.x; ++iii)
+            {
+                for (int kkk = 0; kkk < gameBoardSize.y; ++kkk)
+                {
+                    if (gameBoard[iii][kkk].IsOpened == true)
+                        ++openedCells;
+                }
+            }
+            return openedCells;
         }
 
         private bool isGameBlocked()
@@ -170,28 +211,11 @@ namespace saper.Game
             return true;
         }
 
-        private bool isItFirstRound()
-        {
-            for (int iii = 0; iii < gameBoardSize.x; ++iii)
-            {
-                for (int kkk = 0; kkk < gameBoardSize.y; ++kkk)
-                {
-                    if (gameBoard[iii][kkk].IsOpened == true)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-
         private void changeBombPosition(Vector2D bombCoordinates)
         {
+            gameBoard[bombCoordinates.x][bombCoordinates.y].cellType = Cell.Type.empty;
             this.pickRandomBombCoordinates();
-            gameBoard[bombCoordinates.x][bombCoordinates.y].cellType =
-                (Cell.Type)(this.getAdjancentBombsNumber(bombCoordinates) - 1);
-            //Minus jeden ponieważ w tej komórce znajdowała się bomba, którą policzyła funkcja
-            //getAdjancentBombsNumber
+            this.insertCorrectNumbersInCells();
         }
 
         public bool isBombClicked(Vector2D clickedButtonCoordinates)
