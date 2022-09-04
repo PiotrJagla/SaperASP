@@ -24,6 +24,10 @@ ul.navBarList li {
     
 }
 
+.cutomGameBoardOptions {
+    color: floralwhite;
+}
+
 ul.gameInformations li {
     display: inline-block;
     align-content: center;

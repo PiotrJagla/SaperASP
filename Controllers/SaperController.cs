@@ -38,5 +38,17 @@ namespace saper.Controllers
             saperBoard.changeDifficultyLevel(difficultyLevel);
             return View("~/Views/Game.cshtml", saperBoard);
         }
+
+        public IActionResult gameBoardCustomization(string width, string height, string bombsNumber)
+        {
+            if (Validation.isCustomModeInputCorrect(width, height, bombsNumber) == true)
+            {
+                saperBoard.changeGameBoardToCustom(
+                    new Vector2D(Convert.ToInt32(width), Convert.ToInt32(height)),
+                    Convert.ToInt32(bombsNumber)
+                );
+            }
+            return View("~/Views/Game.cshtml", saperBoard);
+        }
     }
 }

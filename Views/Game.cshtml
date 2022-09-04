@@ -102,6 +102,10 @@
         {
             <img src="~/textures/fiveImage.png"/>
         }
+        else if(buttonState == Cell.Type.six)
+        {
+            <img src="~/textures/sixImage.png"/>
+        }
         else if(buttonState == Cell.Type.notOpened)
         {
             <img src="~/textures/notOpenedImage.png"/>
@@ -141,6 +145,34 @@
     else if(Model.didWon() == true)
     {
         <p>You Won!</p>
+        
+    }
+</div>
+
+<div class="cutomGameBoardOptions">
+    <br />
+
+    @if (Model.isCustomInputConfigurationShown() == true)
+    {
+
+        using (Html.BeginForm("gameBoardCustomization", "Saper"))
+        {
+            <label> Enter cutom saper configuration</label><br />
+
+            <input name="width" class="width-input" />
+            <label> Width (from 2 to 50)</label><br />
+
+            <input name="height" class="height-input" />
+            <label> Height (from 2 to 50)</label><br /> 
+
+            <input name="bombsNumber" class="bombsNumber-input" />
+            <label> Bombs number (from 1 to 1/3 of total cells)</label><br />
+
+            <input type="submit" value="Confirm" class="confirmCustomOptions" /><br/>
+
+            
+        }
+
     }
 </div>
 
