@@ -40,7 +40,7 @@ ul.gameInformations li {
 ul.gameInformations {
     list-style: none;
     text-align: left;
-
+    padding: 0px 66px;
 }
 
 .gameBoardNavbar{
