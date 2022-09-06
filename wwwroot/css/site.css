@@ -1,19 +1,21 @@
 nav.navBar {
     margin: auto;
-    width: 50%;
+    width: 97%;
     padding: 10px;
     height: 60px;
 
 }
 
 h3.titleBar {
-    text-align: center;
+    text-align: left;
     color: floralwhite;
+    padding: 0px 80px;
 }
 
 body {
     background-color: #3A3333;
 }
+
 
 ul.navBarList li {
     display: inline-block;
@@ -30,7 +32,6 @@ ul.navBarList li {
 
 ul.gameInformations li {
     display: inline-block;
-    align-content: center;
     padding: 0px 15px;
     color: floralwhite;
     width: 10%;
@@ -38,8 +39,12 @@ ul.gameInformations li {
 
 ul.gameInformations {
     list-style: none;
-    margin: 0;
-    text-align: center;
+    text-align: left;
+
+}
+
+.gameBoardNavbar{
+    align-items: flex-start;
 }
 
 .gameBoard {
